@@ -27,62 +27,62 @@
 </div>
 
 <script>
-  const delay = 0, // отсрочка выполнения
-        div = document.querySelector('.div'),
-        div2 = document.querySelector('.div-2'),
-        div3 = document.querySelector('.div-3');
-
-  const fadeOut = (elem, d, f) => {
+const delay = 0, // отсрочка выполнения
+	div = document.querySelector('.div'),
+	div2 = document.querySelector('.div-2'),
+	div3 = document.querySelector('.div-3');
+	
+const fadeOut = (elem, d, f) => {
   let fps = f || 60, // кадров в секунду (по умолчанию 60)
       time = d || 800, // время работы анимации (по умолчанию 800мс)
       steps = time / (1000 / fps), // сколько кадров
       opacity = 1, // текущее значение opacity
-			opDown = opacity / steps; // изменение прозрачности за 1 кадр
+      opDown = opacity / steps; // изменение прозрачности за 1 кадр
 
-		let timer = setInterval(() => { // устанавливаем интервал (1000 / fps) например, 50fps -> 1000 / 50 = 20мс
-		opacity -= opDown; // уменьшение текущего значение opacity
-		elem.style.opacity = opacity; // назначение opacity элементу DOM
-		steps--; // уменьение количества оставшихся шагов анимации
+  let timer = setInterval(() => { // устанавливаем интервал (1000 / fps) например, 50fps -> 1000 / 50 = 20мс
+	opacity -= opDown; // уменьшение текущего значение opacity
+	elem.style.opacity = opacity; // назначение opacity элементу DOM
+	steps--; // уменьение количества оставшихся шагов анимации
 
-    // если анимация окончена
-    if (steps <= 0) {
-      clearInterval(timer) // убираем интервал выполнения
-      elem.style.display='none'; // и убираем элемент
-      }
-    }, (1000 / fps));
-	}
+// если анимация окончена
+if (steps <= 0) {
+clearInterval(timer) // убираем интервал выполнения
+elem.style.display='none'; // и убираем элемент
+}
+}, (1000 / fps));
+}
 	
-	const fadeIn = (elem, d, f) => {
+const fadeIn = (elem, d, f) => {
   let fps = f || 60, // кадров в секунду (по умолчанию 60)
       time = d || 800, // время работы анимации (по умолчанию 800мс)
       steps = time / (1000 / fps), // сколько кадров
       opacity = 0, // начальное значение opacity
-			opUp = 1 / steps; // изменение прозрачности за 1 кадр
+      opUp = 1 / steps; // изменение прозрачности за 1 кадр
 
-		let timer = setInterval(() => { // устанавливаем интервал (1000 / fps) например, 50fps -> 1000 / 50 = 20мс
-		elem.style.display='flex'; // добавляем элемент
-		opacity += opUp; // увеличение текущего значение opacity
-		elem.style.opacity = opacity; // назначение opacity элементу DOM
-		steps--; // уменьшение количества оставшихся шагов анимации
+  let timer = setInterval(() => { // устанавливаем интервал (1000 / fps) например, 50fps -> 1000 / 50 = 20мс
+	elem.style.display='flex'; // добавляем элемент
+	opacity += opUp; // увеличение текущего значение opacity
+	elem.style.opacity = opacity; // назначение opacity элементу DOM
+	steps--; // уменьшение количества оставшихся шагов анимации
 
-    // если анимация окончена
-    if (steps <= 0) {
-      clearInterval(timer) // убираем интервал выполнения
-      }
-    }, (1000 / fps));
-  }
+// если анимация окончена
+if (steps <= 0) {
+clearInterval(timer) // убираем интервал выполнения
+}
+}, (1000 / fps));
+}
 
-  div.addEventListener('click', ()=> {
-    setTimeout(fadeOut, delay, div);
-  });
+div.addEventListener('click', ()=> {
+setTimeout(fadeOut, delay, div);
+});
 
-  div2.addEventListener('click', ()=> {
-    setTimeout(fadeOut, delay, div2, 2000, 50);
-  });
+div2.addEventListener('click', ()=> {
+setTimeout(fadeOut, delay, div2, 2000, 50);
+});
 
-  div3.addEventListener('click', ()=> {
-    setTimeout(fadeIn, delay, div2, 5000, 50);
-    setTimeout(fadeIn, delay, div);
-  });
+div3.addEventListener('click', ()=> {
+setTimeout(fadeIn, delay, div2, 5000, 50);
+setTimeout(fadeIn, delay, div);
+});
 
 </script>
